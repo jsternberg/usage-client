@@ -8,6 +8,6 @@ type Server struct {
 	Version   string `json:"version"`
 }
 
-func (s Server) Path() string {
+func (s Server) path() string {
 	return "/servers"
 }

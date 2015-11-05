@@ -11,13 +11,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-type SimpleSaveable struct {
-}
-
-func (s SimpleSaveable) Path() string {
-	return "/foo"
-}
-
 func Test_ClientSave(t *testing.T) {
 	r := require.New(t)
 
@@ -29,7 +22,7 @@ func Test_ClientSave(t *testing.T) {
 	c := client.New("")
 	c.URL = ts.URL
 
-	res, err := c.Save(SimpleSaveable{})
+	res, err := c.Save(client.Stats{})
 	r.NoError(err)
 	r.Equal(200, res.StatusCode)
 }
@@ -45,7 +38,7 @@ func Test_ClientSave_AuthHeaderSet(t *testing.T) {
 	c := client.New("my-token")
 	c.URL = ts.URL
 
-	res, err := c.Save(SimpleSaveable{})
+	res, err := c.Save(client.Stats{})
 	r.NoError(err)
 	r.Equal(200, res.StatusCode)
 
@@ -65,7 +58,7 @@ func Test_ClientSave_500(t *testing.T) {
 	c := client.New("")
 	c.URL = ts.URL
 
-	res, err := c.Save(SimpleSaveable{})
+	res, err := c.Save(client.Stats{})
 	r.Equal(500, res.StatusCode)
 	r.Error(err)
 	r.Equal("oops!", err.Error())
@@ -103,7 +96,7 @@ func Test_ClientSave_422(t *testing.T) {
 	c := client.New("")
 	c.URL = ts.URL
 
-	res, err := c.Save(SimpleSaveable{})
+	res, err := c.Save(client.Stats{})
 	r.Equal(422, res.StatusCode)
 	r.Error(err)
 

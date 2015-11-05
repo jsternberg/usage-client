@@ -15,6 +15,6 @@ type StatsData struct {
 	Values Values `json:"values"`
 }
 
-func (s Stats) Path() string {
+func (s Stats) path() string {
 	return fmt.Sprintf("/stats/%s", s.Product)
 }

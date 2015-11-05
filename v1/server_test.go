@@ -3,16 +3,9 @@ package client_test
 import (
 	"fmt"
 	"io/ioutil"
-	"testing"
 
 	"github.com/influxdb/enterprise-client/v1"
-	"github.com/stretchr/testify/require"
 )
-
-func Test_Server_Implements_Saveable(t *testing.T) {
-	r := require.New(t)
-	r.Implements((*client.Saveable)(nil), client.Server{})
-}
 
 // Example of saving a server to Enterprise
 func Example_saveServer() {
