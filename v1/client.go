@@ -45,7 +45,6 @@ type Saveable interface {
 // responses by generating a proper `error` for them.
 func (c *Client) Save(s Saveable) (*http.Response, error) {
 	u := fmt.Sprintf("%s/api/v1%s", c.URL, s.Path())
-	fmt.Printf("u: %s\n", u)
 
 	b, err := json.Marshal(s)
 	if err != nil {

@@ -1,0 +1,4 @@
+test:
+  override:
+    - soda migrate -e test reset
+    - go test ./... -race
