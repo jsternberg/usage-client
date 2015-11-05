@@ -52,6 +52,7 @@ func (c *Client) Save(s Saveable) (*http.Response, error) {
 	}
 
 	req, err := http.NewRequest("POST", u, bytes.NewReader(b))
+	req.Header.Set("Content-Type", "application/json")
 	if err != nil {
 		return nil, err
 	}
