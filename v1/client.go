@@ -29,10 +29,20 @@ func New(token string) *Client {
 	}
 }
 
+// Saveable needs to be implemented for types that
+// want to be able to be saved to the Enterprise API.
 type Saveable interface {
+	// Path returns specific path to where this type should
+	// be saved, that is everything in the path __after__ "/api/v1".
 	Path() string
 }
 
+// Save does all of the heavy lifting of saving a Saveable
+// Type to the Enterpise API. This will take care of things
+// like building the full path, setting the `token` on the
+// request if one is available, etc... It will also check
+// the status code of the response and handle non-successful
+// responses by generating a proper `error` for them.
 func (c *Client) Save(s Saveable) (*http.Response, error) {
 	u := fmt.Sprintf("%s/api/v1%s", c.URL, s.Path())
 	fmt.Printf("u: %s\n", u)
