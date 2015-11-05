@@ -3,9 +3,17 @@ package client_test
 import (
 	"fmt"
 	"io/ioutil"
+	"testing"
 
 	"github.com/influxdb/enterprise-client/v1"
+	"github.com/stretchr/testify/require"
 )
+
+func Test_Usage_Path(t *testing.T) {
+	r := require.New(t)
+	u := client.Usage{Product: "influxdb"}
+	r.Equal("/usage/influxdb", u.Path())
+}
 
 // Example of saving Usage data to Enterprise
 func Example_saveUsage() {

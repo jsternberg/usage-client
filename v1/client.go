@@ -29,12 +29,12 @@ func New(token string) *Client {
 	}
 }
 
-type saveable interface {
-	path() string
+type Saveable interface {
+	Path() string
 }
 
-func (c *Client) Save(s saveable) (*http.Response, error) {
-	u := fmt.Sprintf("%s/api/v1%s", c.URL, s.path())
+func (c *Client) Save(s Saveable) (*http.Response, error) {
+	u := fmt.Sprintf("%s/api/v1%s", c.URL, s.Path())
 	fmt.Printf("u: %s\n", u)
 
 	b, err := json.Marshal(s)

@@ -10,7 +10,7 @@ type Usage struct {
 	Product string `json:"-"`
 }
 
-func (u Usage) path() string {
+func (u Usage) Path() string {
 	return fmt.Sprintf("/usage/%s", u.Product)
 }
 
