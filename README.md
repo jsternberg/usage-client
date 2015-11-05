@@ -2,9 +2,13 @@
 
 The `enterprise-client` package is used to speak with the Enterprise API in a simple and straight forward way. No muss, no fuss!
 
-## Versions
+## V1
 
-* __v1__: This is the most recent version, please use this version. [https://godoc.org/github.com/influxdb/enterprise-client/v1](https://godoc.org/github.com/influxdb/enterprise-client/v1)
+### Installation
+
+```go
+$ go get github.com/influxdb/enterprise-client/v1
+```
 
 ### An Important Developers Note
 
