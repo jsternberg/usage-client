@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"net"
 	"net/http"
+	"time"
 )
 
 // URL is the default URL for the host of Enterprise.
@@ -60,7 +62,18 @@ func (c *Client) Save(s Saveable) (*http.Response, error) {
 		req.Header.Set("X-Authorization", c.Token)
 	}
 
-	cl := http.Client{}
+	cl := http.Client{
+		Timeout: time.Minute,
+		Transport: &http.Transport{
+			MaxIdleConnsPerHost: 0,
+			Proxy:               http.ProxyFromEnvironment,
+			Dial: (&net.Dialer{
+				Timeout:   30 * time.Second,
+				KeepAlive: 30 * time.Second,
+			}).Dial,
+			TLSHandshakeTimeout: 10 * time.Second,
+		},
+	}
 	res, err := cl.Do(req)
 	if err != nil {
 		return res, err
