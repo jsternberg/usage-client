@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/influxdb/enterprise-client/v1"
+	"github.com/influxdb/usage-client/v1"
 	"github.com/stretchr/testify/require"
 )
 
@@ -18,7 +18,7 @@ func Test_Stats_Implements_Saveable(t *testing.T) {
 func Example_saveStats() {
 	c := client.New("token-goes-here")
 	// override the URL for testing
-	c.URL = "https://enterprise.staging.influxdata.com"
+	c.URL = "https://usage.staging.influxdata.com"
 
 	st := client.Stats{
 		ClusterID: "clus1",

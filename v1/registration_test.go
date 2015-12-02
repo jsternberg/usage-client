@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/influxdb/enterprise-client/v1"
+	"github.com/influxdb/usage-client/v1"
 	"github.com/stretchr/testify/require"
 )
 
@@ -16,7 +16,7 @@ func Test_Client_RegistrationURL(t *testing.T) {
 		Product:     "chronograf",
 		RedirectURL: "http://example.com",
 	})
-	r.Equal("https://enterprise.influxdata.com/start?cluster_id=clus1&product=chronograf&redirect_url=http%3A%2F%2Fexample.com", u)
+	r.Equal("https://usage.influxdata.com/start?cluster_id=clus1&product=chronograf&redirect_url=http%3A%2F%2Fexample.com", u)
 }
 
 func Test_Registration_IsValid(t *testing.T) {
@@ -51,5 +51,5 @@ func Example_registrationURL() {
 
 	s, _ := c.RegistrationURL(r)
 	fmt.Printf("s: %s\n", s)
-	// https://enterprise.influxdata.com/start?cluster_id=clus1&product=chronograf&redirect_url=http%3A%2F%2Fexample.com
+	// https://usage.influxdata.com/start?cluster_id=clus1&product=chronograf&redirect_url=http%3A%2F%2Fexample.com
 }

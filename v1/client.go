@@ -9,13 +9,13 @@ import (
 	"time"
 )
 
-// URL is the default URL for the host of Enterprise.
+// URL is the default URL for the host of the Usage API.
 // This variable can be set globally or on a per Client
 // instance.
-var URL = "https://enterprise.influxdata.com"
+var URL = "https://usage.influxdata.com"
 
 // Client handles all of the heavy lifting of talking
-// to Enterprise for you.
+// to the Usage API for you.
 type Client struct {
 	URL   string // Defaults to `client.URL`
 	Token string // OPTIONAL: The token of the customer making the request
@@ -32,7 +32,7 @@ func New(token string) *Client {
 }
 
 // Saveable needs to be implemented for types that
-// want to be able to be saved to the Enterprise API.
+// want to be able to be saved to the Usage API.
 type Saveable interface {
 	// Path returns specific path to where this type should
 	// be saved, that is everything in the path __after__ "/api/v1".
@@ -40,7 +40,7 @@ type Saveable interface {
 }
 
 // Save does all of the heavy lifting of saving a Saveable
-// Type to the Enterpise API. This will take care of things
+// Type to the Usage API. This will take care of things
 // like building the full path, setting the `token` on the
 // request if one is available, etc... It will also check
 // the status code of the response and handle non-successful

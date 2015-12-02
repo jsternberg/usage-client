@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/influxdb/enterprise-client/v1"
+	"github.com/influxdb/usage-client/v1"
 	"github.com/stretchr/testify/require"
 )
 
@@ -15,11 +15,11 @@ func Test_Usage_Path(t *testing.T) {
 	r.Equal("/usage/influxdb", u.Path())
 }
 
-// Example of saving Usage data to Enterprise
+// Example of saving Usage data to the Usage API
 func Example_saveUsage() {
 	c := client.New("token-goes-here")
 	// override the URL for testing
-	c.URL = "https://enterprise.staging.influxdata.com"
+	c.URL = "https://usage.staging.influxdata.com"
 
 	u := client.Usage{
 		Product: "influxdb",

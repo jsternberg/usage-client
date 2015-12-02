@@ -1,24 +1,24 @@
-# Enterprise Client [![GoDoc](https://godoc.org/github.com/influxdb/enterprise-client/v1?status.svg)](https://godoc.org/github.com/influxdb/enterprise-client/v1)
+# Usage Client [![GoDoc](https://godoc.org/github.com/influxdb/usage-client/v1?status.svg)](https://godoc.org/github.com/influxdb/usage-client/v1)
 
-The `enterprise-client` package is used to speak with the Enterprise API in a simple and straight forward way. No muss, no fuss!
+The `usage-client` package is used to speak with the Usage API in a simple and straight forward way. No muss, no fuss!
 
 ## V1
 
 ### Installation
 
 ```go
-$ go get github.com/influxdb/enterprise-client/v1
+$ go get github.com/influxdb/usage-client/v1
 ```
 
 ### An Important Developers Note
 
-When testing and developing your applications to work with Enterprise, please make sure to change the `client.URL` to be something other than it's default, which is production. Might I recommend the following:
+When testing and developing your applications to work with the Usage API, please make sure to change the `client.URL` to be something other than it's default, which is production. Might I recommend the following:
 
 ```go
-client.URL = "https://enterprise.staging.influxdata.com"
+client.URL = "https://usage.staging.influxdata.com"
 ```
 
-More info can be found in the documentation [here](https://godoc.org/github.com/influxdb/enterprise-client/v1#pkg-variables).
+More info can be found in the documentation [here](https://godoc.org/github.com/influxdb/usage-client/v1#pkg-variables).
 
 __NOTE__: Applications should make this URL configurable.
 
@@ -132,7 +132,7 @@ As you probably know [Go doesn't return error codes for non-2xx HTTP requests](h
 
 The API will return one of two errors back to you if there are any problems:
 
-* `SimpleError` - This type of error is common for status codes such as `401`, `404`, and `500`. [https://godoc.org/github.com/influxdb/enterprise-client/v1#SimpleError](https://godoc.org/github.com/influxdb/enterprise-client/v1#SimpleError)
-* `ValidationErrors` - Type type of error is common for status codes such as `422` and will return specific errors related to the validity of the payload sent to the API. [https://godoc.org/github.com/influxdb/enterprise-client/v1#ValidationErrors](https://godoc.org/github.com/influxdb/enterprise-client/v1#ValidationErrors)
+* `SimpleError` - This type of error is common for status codes such as `401`, `404`, and `500`. [https://godoc.org/github.com/influxdb/usage-client/v1#SimpleError](https://godoc.org/github.com/influxdb/usage-client/v1#SimpleError)
+* `ValidationErrors` - Type type of error is common for status codes such as `422` and will return specific errors related to the validity of the payload sent to the API. [https://godoc.org/github.com/influxdb/usage-client/v1#ValidationErrors](https://godoc.org/github.com/influxdb/usage-client/v1#ValidationErrors)
 
 It is recommended to check for these errors and handle them appropriately.
