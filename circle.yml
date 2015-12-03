@@ -1,11 +1,12 @@
 machine:
   environment:
     IMPORT_PATH: "github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+    COPY_TARGET: echo $GOPATH | sed 's/:.*//'
 
 dependencies:
   override:
-    - mkdir -p "$GOPATH/src/$IMPORT_PATH"
-    - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
+    - mkdir -p "$COPY_TARGET/src/$IMPORT_PATH"
+    - rsync -azC --delete ./ "$COPY_TARGET/src/$IMPORT_PATH/"
 
 test:
   pre:
