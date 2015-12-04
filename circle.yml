@@ -6,9 +6,9 @@ machine:
 dependencies:
   override:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
-    - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
+    - rsync -azC --delete ./ --include=".git" "$GOPATH/src/$IMPORT_PATH/"
   post:
-    - cd "$GOPATH/src/$IMPORT_PATH" && go get -u -f -t ./...
+    - cd "$GOPATH/src/$IMPORT_PATH" && git branch --set-upstream-to="origin/$CIRCLE_BRANCH" && go get -u -f -t ./...
 
 test:
   pre:
