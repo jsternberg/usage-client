@@ -4,8 +4,8 @@ machine:
 
 dependencies:
   override:
-    - COPY_TARGET=$( echo $GOPATH | sed 's/:.*//' ) mkdir -p "$COPY_TARGET/src/$IMPORT_PATH"
-    - COPY_TARGET=$( echo $GOPATH | sed 's/:.*//' ) rsync -azC --delete ./ "$COPY_TARGET/src/$IMPORT_PATH/"
+    - mkdir -p "$GOPATH/src/$IMPORT_PATH"
+    - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
 
 test:
   pre:
